@@ -10,6 +10,7 @@ int dmg1 = 0;
 int dmg2 = 0;
 int fight = 0;
 int day = 1;
+int timeBetween = 1;
 std::string first = "first";
 std::string second = "Second";
 int main() {
@@ -28,6 +29,8 @@ int main() {
     std::cin >> pwr1;
     std::cout << "Base Power for " <<second << " (Recomended 20): ";
     std::cin >> pwr2;
+    std::cout << "Time Between Days (Recomended 0.5-1): ";
+    std::cin >> timeBetween;
     //Begining stats and start to simulation
     std::cout << "Starting Stats\n";
     std::cout << "Health of " << first << " " << h1 << "      ";
@@ -35,13 +38,13 @@ int main() {
     std::cout << "Base Power of " << first << " " << pwr1 << "      ";
     std::cout << "Base Power of " << second << " " << pwr2 << "\n\n";
     sleep(3);
-    std::cout << "Simulation Starts In ";
+    std::cout << "Simulation Starts In \n";
     sleep(1);
-    std::cout << "3  ";
+    std::cout << "3  \n";
     sleep(1);
-    std::cout << "2  ";
+    std::cout << "2  \n";
     sleep(1);
-    std::cout << "1  ";
+    std::cout << "1  \n";
     sleep(1);
     //The simulation itself
     while (h1 > -1000 and h2 > -1000) {
@@ -104,6 +107,6 @@ int main() {
             }
         }
         
-        sleep(1);
+        sleep(timeBetween);
     }
 }
