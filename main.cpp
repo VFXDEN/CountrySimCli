@@ -15,6 +15,7 @@ int day = 1;
 int timeBetween = 0;
 int type1 = 0;
 int type2 = 0;
+std::string start = "y";
 std::string first = "firstTeam";
 std::string second = "secondTeam";
 int main(int argc, char* argv[]) {
@@ -44,102 +45,98 @@ int main(int argc, char* argv[]) {
         std::cout << "Health of " << second << " " << h2 << "\n";
         std::cout << "Base Power of " << first << " " << pwr1 << "      ";
         std::cout << "Base Power of " << second << " " << pwr2 << "\n\n";
-        sleep(3);
-        std::cout << "Simulation Starts In \n";
-        sleep(1);
-        std::cout << "3  \n";
-        sleep(1);
-        std::cout << "2  \n";
-        sleep(1);
-        std::cout << "1  \n";
-        sleep(1);
-    }
-    
-    //The simulation itself
-    while (h1 > -1000 and h2 > -1000) {
-        fight = rand() % 2 + 0;
-        if (fight < 1) {
-            std::cout << "Day " << day << " will be: " << "Peace\n";
-            //calculations
-            day = day + 1;
-            pwrM1 = rand() % 6 + 0;
-            pwrM2 = rand() % 6 + 0;
-            pwr1 = pwr1 + pwrM1;
-            pwr2 = pwr2 + pwrM2;
-            //report
-            std::cout << "Today " << first << " gains " << pwrM1 << " power, and is now at " << pwr1 << " base power\n";
-            std::cout << second << " gains " << pwrM2 << " power, and is now at " << pwr2 << " base power\n";
-            std::cout << "There is nothing else notible today. \n\n";
-            
-        } else {
-            std::cout << "Day " << day << " will be: " << "War\n";
-            //calculations
-            day = day + 1;
-            pwrM1 = rand() % 3 + 0;
-            pwrM2 = rand() % 3 + 0;
-            type1 = rand() % 3 + 0;
-            type2 = rand() % 3 + 0;
-            dmg1 = pwr1 * pwrM1;
-            dmg2 = pwr2 * pwrM2;
-            h1 = h1 - dmg2;
-            h2 = h2 - dmg1;
-            if (h1 < 0) {
-                h1 = 0;
-            } else if(h2 < 0){
-                h2 = 0;
-            }
-            //Report
-            if (type1 == 2) {
-                if (pwrM1 == 0) {
-                    std::cout << first << "'s air strike on " << second << " was not successful. Keeping " << second << " at " << h2 << " health.\n";
-                } else {
-                    std::cout << first << "'s air strike on " << second << " was successful. Doing " << dmg1 <<" damage, and bringing " << second << " to " << h2 << " health.\n";
-                }
-            } else if (type1 == 1) {
-                if (pwrM1 == 0) {
-                    std::cout << first << "'s navy strike on " << second << " was not successful. Keeping " << second << " at " << h2 << " health.\n";
-                } else {
-                    std::cout << first << "'s navy strike on " << second << " was successful. Doing " << dmg1 <<" damage, and bringing " << second << " to " << h2 << " health.\n";
-                }
-            } else if (type1 == 0){
-                if (pwrM1 == 0) {
-                    std::cout << first << "'s land assault on " << second << " was not successful. Keeping " << second << " at " << h2 << " health.\n";
-                } else {
-                    std::cout << first << "'s land assault on " << second << " was successful. Doing " << dmg1 <<" damage, and bringing " << second << " to " << h2 << " health.\n";
-                }
-            }
-            if (type2 == 2) {
-                if (pwrM2 == 0) {
-                    std::cout << second << "'s air strike on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n\n";
-                } else {
-                    std::cout << second << "'s air strike on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n\n";
-                }
-            } else if (type2 == 1) {
-                if (pwrM2 == 0) {
-                    std::cout << second << "'s navy strike on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n\n";
-                } else {
-                    std::cout << second << "'s navy strike on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n\n";
-                }
-            } else if (type2 == 0){
-                if (pwrM2 == 0) {
-                    std::cout << second << "'s land assault on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n\n";
-                } else {
-                    std::cout << second << "'s land assault on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n\n";
-                }
-            }
-            //Win/Loss Check
-            if (h1 < 1) {
-                std::cout << "Team " << second << " Won On Day " << day << std::endl;
-                return 0;
-            } else if(h2 < 1) {
-                std::cout << "Team " << first << " Won On Day " << day << std::endl;
-                return 0;
-            } else if(h1 < 1 and h2 < 1) {
-                std::cout << "It Was A Draw On Day " << day << std::endl;
-                return 0;
-            }
+        std::cout << "Start?(y or n): ";
+        std::cin >> start;
+        if(start == "n"){
+            return 0;
         }
         
-        sleep(timeBetween);
+        //The simulation itself
+        while (h1 > -1000 and h2 > -1000) {
+            fight = rand() % 2 + 0;
+            if (fight < 1) {
+                std::cout << "Day " << day << " will be: " << "Peace\n";
+                //calculations
+                day = day + 1;
+                pwrM1 = rand() % 6 + 0;
+                pwrM2 = rand() % 6 + 0;
+                pwr1 = pwr1 + pwrM1;
+                pwr2 = pwr2 + pwrM2;
+                //report
+                std::cout << "Today " << first << " gains " << pwrM1 << " power, and is now at " << pwr1 << " base power\n";
+                std::cout << second << " gains " << pwrM2 << " power, and is now at " << pwr2 << " base power\n";
+                std::cout << "There is nothing else notible today. \n\n";
+                
+            } else {
+                std::cout << "Day " << day << " will be: " << "War\n";
+                //calculations
+                day = day + 1;
+                pwrM1 = rand() % 3 + 0;
+                pwrM2 = rand() % 3 + 0;
+                type1 = rand() % 3 + 0;
+                type2 = rand() % 3 + 0;
+                dmg1 = pwr1 * pwrM1;
+                dmg2 = pwr2 * pwrM2;
+                h1 = h1 - dmg2;
+                h2 = h2 - dmg1;
+                if (h1 < 0) {
+                    h1 = 0;
+                } else if(h2 < 0){
+                    h2 = 0;
+                }
+                //Report
+                if (type1 == 2) {
+                    if (pwrM1 == 0) {
+                        std::cout << first << "'s air strike on " << second << " was not successful. Keeping " << second << " at " << h2 << " health.\n";
+                    } else {
+                        std::cout << first << "'s air strike on " << second << " was successful. Doing " << dmg1 <<" damage, and bringing " << second << " to " << h2 << " health.\n";
+                    }
+                } else if (type1 == 1) {
+                    if (pwrM1 == 0) {
+                        std::cout << first << "'s navy strike on " << second << " was not successful. Keeping " << second << " at " << h2 << " health.\n";
+                    } else {
+                        std::cout << first << "'s navy strike on " << second << " was successful. Doing " << dmg1 <<" damage, and bringing " << second << " to " << h2 << " health.\n";
+                    }
+                } else if (type1 == 0){
+                    if (pwrM1 == 0) {
+                        std::cout << first << "'s land assault on " << second << " was not successful. Keeping " << second << " at " << h2 << " health.\n";
+                    } else {
+                        std::cout << first << "'s land assault on " << second << " was successful. Doing " << dmg1 <<" damage, and bringing " << second << " to " << h2 << " health.\n";
+                    }
+                }
+                if (type2 == 2) {
+                    if (pwrM2 == 0) {
+                        std::cout << second << "'s air strike on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n\n";
+                    } else {
+                        std::cout << second << "'s air strike on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n\n";
+                    }
+                } else if (type2 == 1) {
+                    if (pwrM2 == 0) {
+                        std::cout << second << "'s navy strike on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n\n";
+                    } else {
+                        std::cout << second << "'s navy strike on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n\n";
+                    }
+                } else if (type2 == 0){
+                    if (pwrM2 == 0) {
+                        std::cout << second << "'s land assault on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n\n";
+                    } else {
+                        std::cout << second << "'s land assault on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n\n";
+                    }
+                }
+                //Win/Loss Check
+                if (h1 < 1) {
+                    std::cout << "Team " << second << " Won On Day " << day << std::endl;
+                    return 0;
+                } else if(h2 < 1) {
+                    std::cout << "Team " << first << " Won On Day " << day << std::endl;
+                    return 0;
+                } else if(h1 < 1 and h2 < 1) {
+                    std::cout << "It Was A Draw On Day " << day << std::endl;
+                    return 0;
+                }
+            }
+            
+            sleep(timeBetween);
+        }
     }
 }
