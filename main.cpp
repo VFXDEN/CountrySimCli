@@ -16,6 +16,7 @@ int timeBetween = 0;
 int type1 = 0;
 int type2 = 0;
 std::string start = "y";
+std::string manual = "n";
 std::string first = "firstTeam";
 std::string second = "secondTeam";
 int main(int argc, char* argv[]) {
@@ -36,9 +37,13 @@ int main(int argc, char* argv[]) {
         std::cin >> pwr1;
         std::cout << "Base Power for " <<second << " (Recomended 20): ";
         std::cin >> pwr2;
-        //Time between days
-        std::cout << "Time Between Days (Recomended 1): ";
-        std::cin >> timeBetween;
+        std::cout << "Controlled manually? (y or n, {y recomended}):";
+        std::cin >> manual;
+        if (manual == "n") {
+            //Time between days
+            std::cout << "Time Between Days (Recomended 1): ";
+            std::cin >> timeBetween;
+        }
         //Begining stats and start to simulation
         std::cout << "\n\nStarting Stats\n";
         std::cout << "Health of " << first << " " << h1 << "      ";
@@ -50,7 +55,7 @@ int main(int argc, char* argv[]) {
         if(start == "n"){
             return 0;
         }
-        
+        system("clear");
         //The simulation itself
         while (h1 > -1000 and h2 > -1000) {
             fight = rand() % 2 + 0;
@@ -66,7 +71,6 @@ int main(int argc, char* argv[]) {
                 std::cout << "Today " << first << " gains " << pwrM1 << " power, and is now at " << pwr1 << " base power\n";
                 std::cout << second << " gains " << pwrM2 << " power, and is now at " << pwr2 << " base power\n";
                 std::cout << "There is nothing else notible today. \n\n";
-                
             } else {
                 std::cout << "Day " << day << " will be: " << "War\n";
                 //calculations
@@ -106,21 +110,21 @@ int main(int argc, char* argv[]) {
                 }
                 if (type2 == 2) {
                     if (pwrM2 == 0) {
-                        std::cout << second << "'s air strike on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n\n";
+                        std::cout << second << "'s air strike on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n";
                     } else {
-                        std::cout << second << "'s air strike on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n\n";
+                        std::cout << second << "'s air strike on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n";
                     }
                 } else if (type2 == 1) {
                     if (pwrM2 == 0) {
-                        std::cout << second << "'s navy strike on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n\n";
+                        std::cout << second << "'s navy strike on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n";
                     } else {
-                        std::cout << second << "'s navy strike on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n\n";
+                        std::cout << second << "'s navy strike on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n";
                     }
                 } else if (type2 == 0){
                     if (pwrM2 == 0) {
-                        std::cout << second << "'s land assault on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n\n";
+                        std::cout << second << "'s land assault on " << first << " was not successful. Keeping " << first << " at " << h1 << " health.\n";
                     } else {
-                        std::cout << second << "'s land assault on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n\n";
+                        std::cout << second << "'s land assault on " << first << " was successful. Doing " << dmg2 <<" damage, and bringing " << first << " to " << h1 << " health.\n";
                     }
                 }
                 //Win/Loss Check
@@ -135,8 +139,15 @@ int main(int argc, char* argv[]) {
                     return 0;
                 }
             }
-            
-            sleep(timeBetween);
+            if (manual == "n") {
+                sleep(timeBetween);
+                std::cout << "\n";
+            } else {
+                std::cin.ignore();
+                char input = std::cin.get();
+                system("clear");
+                
+            }
         }
     }
 }
