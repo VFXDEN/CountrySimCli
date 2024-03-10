@@ -3,14 +3,14 @@
     Most stats are customizable. *other than factors of randomization*
 
   ## Dependencies
-    - **unistd.h**
-    - **iostream**
-    - **stdlib.h**
+    - unistd.h
+    - iostream
+    - stdlib.h
 
 ## Build instructions
   ### You have **2 Options** for how to install it
 
-    - Use the unix executable file. _I have no clue if it will work on your computer_
+    - Use the unix executable file. (I have no clue if it will work on your computer)
     - Idk build it yourself
 
   ## Support
