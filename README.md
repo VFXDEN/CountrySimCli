@@ -10,7 +10,7 @@
 ## Build instructions
   ### You have **2 Options** for how to install it
 
-    - Use the unix executable file. *I have no clue if it will work on your computer*
+    - Use the unix executable file. _I have no clue if it will work on your computer_
     - Idk build it yourself
 
   ## Support
