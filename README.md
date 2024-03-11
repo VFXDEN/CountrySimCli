@@ -6,6 +6,8 @@
     - unistd.h
     - iostream
     - stdlib.h
+    - random
+    - ctime
 
 ## Build instructions
   ### You have **2 Options** for how to install it
