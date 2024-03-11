@@ -98,7 +98,7 @@ int main(int argc, char* argv[]) {
                             std::cin >> tAP;
                             if (aP1 >= tAP) {
                                 pwrL1 += tAP;
-                                pwrA1 -= tAP;
+                                aP1 -= tAP;
                                 std::cout << tAP <<"\nPoints have been added, bringing total land power to " << pwrL1 << ".\n\n";
                             } else {
                                 std::cout << "\nNot enough points\n\n";
